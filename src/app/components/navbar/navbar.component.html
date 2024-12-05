@@ -1,0 +1,36 @@
+<nav class="navbar">
+  <a href="#" class="navbar-logo">
+    <img class="logo-custom" src="/assets/images/logos/logo1.png" alt="Logo" />
+  </a>
+
+  <!-- Botón de menú hamburguesa para dispositivos móviles -->
+  <div class="menu-toggle" (click)="toggleMenu()">
+    &#9776; <!-- Icono de hamburguesa -->
+  </div>
+
+  <!-- Lista de enlaces del menú   class="fas fa-sign-in-alt"-->
+  <ul class="navbar-links" [class.active]="menuOpen">
+    <!-- <li><a href="#" class="active">Inicio</a></li>
+    <li><a href="#">Quienes somos</a></li> -->
+    <li><a [class.active]="currentPage === '#'" (click)="setCurrentPage('home')">Inicio</a></li>
+    
+    <!-- <li><a [class.active]="currentPage === 'about'" (click)="setCurrentPage('about')">Quienes somos</a></li> -->
+    <li><a [routerLink]="'/about'">Acerca de</a></li>
+    <li class="dropdown">
+      <a [class.active]="currentPage === 'services'" (click)="setCurrentPage('services')">Servicios<i class="fas fa-chevron-down"></i></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Acompañamiento escolar</a></li>
+        <li><a href="#">Nivelación Académica</a></li>
+        <li><a href="#">Atención personalizada</a></li>
+        <li><a href="#">Ayuda y orientación con</a></li>
+      </ul>
+    </li>
+    <li><a [class.active]="currentPage === 'team'" (click)="setCurrentPage('team')">Equipo responsable</a></li>
+    <li><a [class.active]="currentPage === 'events'" (click)="setCurrentPage('events')">Eventos</a></li>
+    <li><a [class.active]="currentPage === 'gallery'" (click)="setCurrentPage('gallery')">Galería</a></li>
+    <!-- <li><a href="#">Blog</a></li> -->
+    <li><a [class.active]="currentPage === 'contacts'" (click)="setCurrentPage('contacts')">Contactos</a></li>
+    <!-- <li><a [class.active]="currentPage === 'login'" (click)="setCurrentPage('login')"><i class="fas fa-sign-in-alt"></i></a></li> -->
+   
+  </ul>
+</nav>

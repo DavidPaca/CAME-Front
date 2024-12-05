@@ -1,0 +1,271 @@
+/* Asegúrate de que el navbar ocupe el 100% del ancho */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*padding: 25px 60px; /* Ajuste en el padding para reducir el espacio y asegurar que esté pegado al tope */
+  padding: 0 100px; /* Espacio lateral */
+  height: 85px; /* Altura fija del navbar */
+  position: fixed; /* Fija el navbar en la parte superior */
+  top: 0; /* Se posiciona en la parte superior de la ventana */
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Asegura que esté sobre el contenido */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con transparencia */
+  /*overflow: hidden;  Evita que los elementos sobresalgan del navbar */
+}
+
+/* Contenedor para añadir el margen lateral 
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 6cm);  Resta 3 cm a cada lado 
+}*/
+/*******************************************************************************************/
+/* Estilo para el logo */
+.navbar-logo {
+  display: flex; /* Hacer flex para centrar la imagen */
+  align-items: center; /* Centra verticalmente la imagen */
+}
+
+
+.logo-custom {
+  height: 90px; /* Ajusta la altura de la imagen según lo necesites */
+  width: auto; /* Mantiene la proporción de la imagen */
+  display: block; /* Elimina espacio extra alrededor de la imagen */
+  padding: 0; /* Elimina el padding alrededor de la imagen */
+  margin: 0; /* Asegura que no haya márgenes */
+  /* Si deseas que el logo ocupe todo el alto del navbar */
+  max-height: 100%; /* Asegúrate de que no exceda el alto del contenedor */
+}
+/***********************************************************************************************/
+/* Estilo para los enlaces del navbar */
+.navbar-links {
+    display: flex;
+    list-style: none;
+    gap: 25px; /* Espacio entre cada enlace */
+    margin: 0; /* Elimina el margen por defecto */
+    padding: 0; /* Elimina el padding por defecto */
+}
+
+.navbar-links li {
+  position: relative; /* Importante para el dropdown */
+}
+
+/* Estilo para los enlaces del navbar */
+.navbar-links li a {
+    text-decoration: none;
+    color: #fff; /* Texto blanco */
+    font-size: 16px; /* Aumenta el tamaño de la fuente */
+    display: block;
+    position: relative; /* Necesario para usar el pseudo-elemento */
+    padding: 10px 0;
+    line-height: 40px; /* Centra verticalmente los enlaces */
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer; /* Agrega esta línea */
+    
+  }
+  
+  /* Estilo para el borde inferior de la opción activa */
+  .navbar-links li a::after {
+    content: ''; /* Necesario para crear el pseudo-elemento */
+    position: absolute;
+    width: 0;
+    height: 2px; /* Grosor de la línea */
+    background-color: #fff; /* Color de la línea */
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease; /* Efecto de transición */
+    cursor: pointer;
+  }
+  
+  /* Cuando el enlace está activo o el cursor pasa sobre él, muestra la línea completa */
+  .navbar-links li a:hover::after,
+  .navbar-links li a.active::after {
+    width: 100%; /* Ancho completo bajo el texto */
+  }
+
+  /* Estilo para los enlaces con iconos */
+.navbar-links li a i {
+  margin-left: 5px; /* Espacio entre el texto y el icono */
+  font-size: 15px;  /* Tamaño del icono */
+  vertical-align: middle; /* Alineación vertical */
+}
+/*******************************************************************/
+/* Dropdown menu estilos pantallas grandes*/
+.navbar-links li .dropdown-menu {
+  display: none; /* Oculto inicialmente */
+  position: absolute;
+  top: 100%; /* Coloca el submenú justo debajo del enlace principal */
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro similar al navbar */
+  color: white;
+  padding: 0;
+  list-style: none;
+  border-radius: 5px;
+  width: 220px; /* Asegura que el fondo tenga un ancho específico */
+  box-sizing: border-box; /* Incluye el padding en el tamaño total */
+  z-index: 1001; /* Asegura que esté sobre el resto del contenido */
+  overflow: hidden; /* Evita que los submenús se desborden */
+  min-width: 200px;
+  min-width: 200px; /* Ancho mínimo para asegurar que se vea bien */
+}
+
+/* Eliminar el espaciado de letras en los enlaces del submenú */
+.dropdown-menu li {
+  margin: 0; /* Elimina márgenes que puedan causar desbordamiento */
+}
+
+/* Eliminar el espaciado de letras en los enlaces del submenú */
+.dropdown-menu li a {  
+  padding: 10px 15px; /* Ajuste del padding */
+  font-size: 16px; /* Ajusta el tamaño de la fuente */
+  text-decoration: none;
+  display: block;
+  width: 100%; /* Asegura que los enlaces ocupen todo el espacio disponible */
+  box-sizing: border-box; /* Asegura que el padding esté dentro del ancho total */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición para hover */
+  position: relative;
+  text-align: left;
+  color: #fff; /* Texto blanco */ 
+  line-height: 1.8; /* Ajusta el valor para reducir el espacio entre líneas */
+  padding: 5px 10px; /* Ajusta el padding si es necesario */
+  font-size: 14px; /* Ajusta el tamaño de la fuente para uniformidad */
+}
+
+/* Barra inferior de los enlaces */
+.dropdown-menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: transparent; /* Inicialmente invisible */
+  transition: width 0.3s ease, background-color 0.3s ease; /* Transición para barra inferior */
+}
+
+/* Muestra el dropdown menu al pasar sobre el elemento */
+.navbar-links li:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+   /* Fondo de hover claro #1a50e5 */
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo de hover claro */
+  color: #fff; /* Color de texto azul al hacer hover #1a50e5 */
+}
+
+.dropdown-menu {
+  min-width: 500px; /* Ajusta el ancho mínimo */
+  padding: 10px 20px; /* Ajusta el padding según lo necesites */
+  background-color: rgba(0, 0, 0, 0.9); /* Color de fondo */
+}
+/* Mostrar la barra inferior en azul al hacer hover sobre el enlace */
+.dropdown-menu li a:hover::after {
+  width: 100%; /* Expande la barra hasta cubrir todo el ancho del enlace */
+  background-color: #fff; /* Barra inferior azul */
+}
+
+/*----------------------------------------------------------------------*/
+/* Menú hamburguesa para dispositivos móviles */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+/*----------------------------------------------------------------------*/
+/* Estilos específicos para pantallas pequeñas */
+@media (max-width: 820px) {
+  /* Ocultar el menú en pantallas pequeñas por defecto */
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 85px;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    gap: 10px;
+  }
+  /*-----*/
+  /* Mostrar el menú cuando esté activo */
+  .navbar-links.active {
+    display: flex;
+  }
+
+  /* Ajustes del enlace en el menú desplegable */
+  .navbar-links li a {
+    font-size: 18px;
+    border-bottom: 1px solid #444;
+    padding: 15px;
+  }
+
+  /* Mostrar el botón de menú hamburguesa en pantallas pequeñas */
+  .menu-toggle {
+    display: block;
+  }
+/*-------*/
+
+  /* Dropdown en dispositivos móviles */
+  .dropdown-menu {
+    display: none; /* Oculto inicialmente */
+    position: relative; /* Mantiene su posición relativa al enlace "Drop Down" */
+    background-color: rgba(241, 15, 15, 0.9);
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Muestra el submenú cuando el enlace padre está activo */
+  .navbar-links li.active .dropdown-menu {
+    display: block; /* Despliega el submenú en dispositivos móviles */
+  }
+
+  .dropdown-menu li a {
+    padding: 10px;
+    font-size: 16px;
+    border-top: 1px solid #444;
+    cursor: pointer;
+  }
+}
+/*********************************************************************************************************/
+/* Estilos generales para el navbar en pantallas medianas */
+@media (min-width: 821px) and (max-width: 1024px) {
+  /* Ajusta el padding y el tamaño de los enlaces */
+  .navbar {
+    padding: 10px 10px; /* Reduce el padding para que ocupe menos espacio */
+    
+  }
+
+  .navbar-logo img {
+    height: 80px; /* Reduce el tamaño del logo en pantallas medianas */
+  }
+
+  .navbar-links {
+    gap: 25px; /* Reduce el espacio entre los enlaces */
+  }
+
+  .navbar-links li a {
+    font-size: 16px; /* Reduce el tamaño de fuente de los enlaces */
+    line-height: 1.5; /* Ajusta el espaciado de línea */
+    padding: 8px; /* Reduce el padding para un aspecto más compacto */
+  }
+
+  /* Ajustes para los submenús en pantallas medianas */
+  .dropdown-menu {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo transparente similar al navbar */
+    padding: 10px 0; /* Espacio en el submenú */
+    width: 150px; /* Ancho fijo para evitar que se desborde */
+    left: 0; /* Ajuste para centrar debajo del enlace padre */
+    display: none; /* Oculto inicialmente */
+  }
+
+  .dropdown-menu li a {
+    font-size: 14px; /* Tamaño más pequeño en los enlaces del submenú */
+    padding: 8px 10px; /* Espaciado reducido en los enlaces del submenú */
+  }
+}

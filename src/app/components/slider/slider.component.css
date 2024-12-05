@@ -1,0 +1,342 @@
+.slider-area {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    overflow: hidden;
+  }  
+  .slides {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }  
+  .slider-image {
+    min-width: 100%;
+    height: auto;
+    display: none; /* Oculta todas las imágenes por defecto */
+  }  
+  .slider-image.active {
+    display: block; /* Solo muestra la imagen activa */
+  }  
+  .slider-direction {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }  
+  .slider-direction.active {
+    opacity: 1; /* Hace visible el contenido de la imagen activa */
+  }
+/*---------------------------- Opacidad imagen  ---------------------------*/
+/* Para que la flecha de navegacion derecha no no se salga de la pantalla*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* html, body {
+  width: 100%;
+  height: 100%; */
+ /* overflow: hidden; *//* Elimina cualquier posible desplazamiento */
+/* } */
+/*Dar opacidad gris a la imagen*/
+.slider-area {
+  position: fixed; /* Fija el slider en la pantalla completa */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: gray;  /*Color de fondo para que no se vea el espacio blanco */
+}
+/*Le da a la imagen opacidad suave*/
+.slider-image {
+  width: auto; /* Asegura que ocupe todo el ancho de la pantalla */
+  height: auto; /* Asegura que ocupe toda la altura de la pantalla */
+  object-fit: cover; /* Escala la imagen para que cubra todo el slider sin distorsionarse */
+  opacity: 0.7; /* Aplica transparencia solo a las imágenes */
+}
+/* Ajustes para la dirección del slider */
+/* .slider-direction {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white; */
+ /* opacity: 1;*/ /* Mantiene el texto completamente visible */
+ /* padding: 20px;*/
+  /*z-index: 10;*/ /* Asegura que el texto esté encima de la imagen */
+/* } */
+/* Hacer visible la dirección del slider activa */
+.slider-direction.active {
+  opacity: 1;
+}
+/*********************************** BARRAS INFERIORES*********************************/
+/* Navegación de barras */
+.nivo-controlNav {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  z-index: 20; /* Asegura que las barras estén encima de las imágenes */
+}
+/********************************** Barra de navegación para seleccionar cada imagen ****************************************/
+.nivo-control {
+  width: 20px;
+  height: 5px;
+  margin: 0 5px;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: transform 0.5s ease, background-color 0.5s ease;
+}
+
+/* Barra activa */
+.nivo-control.active {
+  background-color: #1a50e5;
+}
+
+/* Efecto al pasar el mouse sobre las barras */
+.nivo-control:hover {
+  background-color: #1a50e5; /* Cambia el color al pasar el mouse */
+  transform: rotate(360deg); /* Gira 360 grados */
+}
+/*-------------------------- FLECHAS NEXT PREV ----------------------------*/
+.nivo-directionNav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Espaciado entre flechas */
+  padding: 0 20px; /* Espacio a los lados de las flechas */
+  z-index: 10; /* Asegúrate de que estén por encima de otras capas */
+}
+
+.nivo-prevNav,
+.nivo-nextNav {
+  /*background-color: rgba(0, 0, 0, 0.5);  Fondo oscuro y semi-transparente */
+  opacity: 0.7;
+  border-radius: 50%; /* Hacer las flechas circulares */
+  border: 3px solid #ffffff; /* Borde blanco alrededor de la circunferencia */
+  width: 50px; /* Ancho del botón */
+  height: 50px; /* Alto del botón */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; /* Cambia el cursor a mano */
+  transition: background-color 0.3s; /* Transición para el hover */
+}
+
+.nivo-prevNav,
+.nivo-nextNav i {
+  color: #ffffff;
+}
+
+.nivo-prevNav:hover,
+.nivo-nextNav:hover {
+  background-color: #1a50e5; /* Cambiar fondo al hacer hover */
+
+}
+
+/* Estilo adicional para bordes de las flechas */
+.nivo-prevNav::before,
+.nivo-nextNav::before {
+  border: 1px solid #ffffff; /* Borde blanco alrededor de la flecha */
+  border-radius: 50%; /* Hacer el borde circular */
+  padding: 10px; /* Espacio entre el borde y la flecha */
+}
+/*--------------------- TITLES ---------------------------*/
+.slider-content h2.title1,
+.slider-content h1.title2 {
+  color: #ffffff; /* Cambia el color del texto si es necesario */
+  width: 80pc;
+  margin: 0; /* Elimina márgenes para un mejor centrado */
+}
+
+.slider-content h2.title1 {
+  font-size: 35px; /* Tamaño de fuente para h2 */
+}
+
+.slider-content h1.title2 {
+  font-size: 45px; /* Tamaño de fuente para h1 */
+}
+/*--------------------------- BOTONES ---------------------------------*/
+.layer-1-3 a.ready-btn {
+  border: 1px solid #fff;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 30px;
+  padding: 10px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.4s ease 0s;
+  z-index: 222;
+  text-decoration: none;
+}
+
+.layer-1-3 a.ready-btn:hover {
+  color: #fff;
+  background: #1a50e5;
+  border: 1px solid #1a50e5;
+  text-decoration: none;
+}
+
+.ready-btn.right-btn {
+  margin-right: 15px;
+  background: #1a50e5;
+  border: 1px solid #1a50e5 !important;
+}
+
+.ready-btn.right-btn:hover {
+  background: transparent !important;
+  border: 1px solid #fff !important;
+}
+
+
+/*********************************************************************************************/
+/* Responsivo para pantallas medianas */
+@media (min-width: 821px) and (max-width: 1024px) {
+/* Ajustes generales para mejorar la visibilidad en pantallas medianas */
+
+.slider-area {
+  height: 100%; /* Mantiene la altura completa en tabletas */
+}
+/*-------------------------- FLECHAS NEXT PREV medianas ----------------------------*/
+.nivo-directionNav {
+  position: absolute;
+  top: 15%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Espaciado entre flechas */
+  padding: 0 20px; /* Espacio a los lados de las flechas */
+  z-index: 10; /* Asegúrate de que estén por encima de otras capas */
+}
+  /* Coloca a la imagen a las medidas de una pantalla media*/
+.slides {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+.nivo-prevNav,
+.nivo-nextNav i {
+  color: #ffffff;
+}
+.nivo-prevNav:hover,
+.nivo-nextNav:hover {
+  background-color: #1a50e5; /* Cambiar fondo al hacer hover */
+}
+/* Estilo adicional para bordes de las flechas */
+.nivo-prevNav::before,
+.nivo-nextNav::before {
+  border: 1px solid #ffffff; /* Borde blanco alrededor de la flecha */
+  border-radius: 50%; /* Hacer el borde circular */
+  padding: 10px; /* Espacio entre el borde y la flecha */
+}
+/*********************************** BARRAS INFERIORES*********************************/
+/* Navegación de barras */
+.nivo-controlNav {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 420px;
+  width: 100%;
+  z-index: 20; /* Asegura que las barras estén encima de las imágenes */
+}
+
+.nivo-control {
+  width: 20px;
+  height: 5px;
+  margin: 0 5px;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: transform 0.5s ease, background-color 0.5s ease;
+}
+
+/* Barra activa */
+.nivo-control.active {
+  background-color: #1a50e5;
+}
+
+/* Efecto al pasar el mouse sobre las barras */
+.nivo-control:hover {
+  background-color: #1a50e5; /* Cambia el color al pasar el mouse */
+  transform: rotate(360deg); /* Gira 360 grados */
+}
+/*--------------------- TITLES medianas---------------------------*/
+/* El contenedor para el texto debe ocupar todo el área */
+.slider-content {
+  display: flex;
+  /* justify-content: center; */
+  /*align-items: center;*/ /* Centrado vertical */
+  flex-direction: column; /* Apila los elementos de manera vertical */
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translate(-60%, -140%); /* Centra el contenedor en el medio de la pantalla */
+  /* text-align: center; */
+  color: white;
+  z-index: 10; /* Asegura que el texto esté encima de la imagen */
+  /* width: 100%; */
+  /*padding: 50px;*/ /* Opcional, agrega algo de espacio alrededor */
+}
+
+/* Ajuste en el estilo de los títulos */
+.slider-content h2.title1,
+.slider-content h1.title2 {
+  width: 80%; /* Ajusta el ancho del texto para evitar que se salga del contenedor */
+  margin: 10px 100px; /* Espaciado entre los títulos */
+  /*word-wrap: break-word;*/ /* Rompe palabras largas para evitar que se desborden */
+}
+
+/* Ajuste del tamaño de los textos según el tamaño de la pantalla */
+.slider-content h2.title1 {
+  font-size: 20px;
+}
+
+.slider-content h1.title2 {
+  font-size: 25px;
+}
+}
+/*************************************************** Otras PEQUEÑAS *******************/
+/* Media queries para dispositivos pequeños */
+@media (max-width: 768px) {
+  /* Ajuste de altura en pantallas más pequeñas */
+  /* .slider-area {
+      height: 70vh;
+  } */
+  .slider-area {
+    height: 50vh; /* Mantiene la altura completa en tabletas */
+  }
+.slider-content h2.title1,
+.slider-content h1.title2 {
+  width: 100%; /* Ajusta el ancho del texto para evitar que se salga del contenedor */
+  margin: 0px 10px; /* Espaciado entre los títulos */  
+}
+  .slider-content h2.title1 {
+      font-size: 15px;   
+  }
+  .slider-content h1.title2 {
+      font-size: 20px;
+  }
+  /* Ajuste del tamaño de las flechas de navegación */
+  .nivo-prevNav, .nivo-nextNav {
+      width: 40px;
+      height: 40px;
+  }
+}
+

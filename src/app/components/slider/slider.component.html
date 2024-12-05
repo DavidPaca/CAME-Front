@@ -1,0 +1,76 @@
+<!-- Start Slider Area -->
+<div id="home" class="slider-area">
+  <div class="bend niceties">
+    <div class="slides">
+      <img *ngFor="let img of images; let i = index"
+        [src]="img"
+        [ngClass]="{'active': currentIndex === i}"
+        class="slider-image" />
+    </div>
+
+    <!-- Flechas de navegación -->
+    <div class="nivo-directionNav">
+      <a class="nivo-prevNav" (click)="prevSlide()">
+        <i class="fas fa-chevron-left"></i>
+        <!-- Símbolo para la flecha izquierda -->
+      </a>
+      <a class="nivo-nextNav" (click)="nextSlide()">
+        <!-- <span class="arrow-right">&gt;</span> -->
+        <i class="fas fa-chevron-right"></i>
+      </a>
+    </div>
+
+    <!-- Descripciones de cada imagen -->
+    <div class="slider-direction" *ngFor="let img of images; let i = index"
+      [ngClass]="{'active': currentIndex === i}">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="slider-content text-center">
+              <h2 class="title1" *ngIf="currentIndex === 0"></h2>
+              <div class="layer-1-2 wow slideInUp" data-wow-duration="2s"
+                data-wow-delay=".1s"></div>
+              <h1 class="title2" *ngIf="currentIndex === 0"></h1>
+              <div class="layer-1-3">
+                <!-- <a class="ready-btn right-btn page-scroll" *ngIf="currentIndex === 0" href="#services">See Services</a>
+                <a class="ready-btn page-scroll" *ngIf="currentIndex === 0" href="#about">Learn More</a> -->
+              </div>
+
+              <h2 class="title1" *ngIf="currentIndex === 1">¡Descubre el
+                potencial de tus hijos!</h2>
+              <h1 class="title2" *ngIf="currentIndex === 1">Nuestro centro de
+                apoyo escolar está aquí para brindarles las herramientas y el
+                acompañamiento que necesitan para triunfar en sus estudios.</h1>
+              <div class="layer-1-3">
+                <!-- <a class="ready-btn right-btn page-scroll" *ngIf="currentIndex === 1" href="#services">Services of Business</a>
+                <a class="ready-btn page-scroll" *ngIf="currentIndex === 1" href="#about">Learn More Information</a> -->
+              </div>
+
+              <h2 class="title1" *ngIf="currentIndex === 2">Disfruta
+                aprendiendo</h2>
+              <h1 class="title2" *ngIf="currentIndex === 2">Transformamos el
+                aprendizaje en una experiencia positiva y enriquecedora, ellos
+                no solo aprenden, disfrutan aprendiendo</h1>
+              <div class="layer-1-3">
+                <!-- <a class="ready-btn right-btn page-scroll" *ngIf="currentIndex === 2" href="#services">Other Services</a>
+                <a class="ready-btn page-scroll" *ngIf="currentIndex === 2" href="#about">See Other Services</a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navegación de barras para seleccionar cada imagen -->
+  <div class="nivo-controlNav">
+    <a *ngFor="let img of images; let i = index"
+      class="nivo-control"
+      [ngClass]="{'active': currentIndex === i}"
+      (click)="goToSlide(i)">
+      <!-- Solo las barras, sin numeración -->
+      <div class="bar"></div>
+    </a>
+  </div>
+</div>
+<!-- End Slider Area -->
